@@ -211,4 +211,22 @@ public class TowWayLinkList<T> implements Iterable<T> {
             }
         };
     }
+
+    public void reverse(){
+        if (isEmpty()){
+            return;
+        }
+        reverse(head.next);
+    }
+
+    public Node reverse(Node curr){
+        if (curr.next == null){
+            head.next = curr;
+            return curr;
+        }
+        Node pre = reverse(curr.next);
+        pre.next = curr;
+        curr.next = null;
+        return curr;
+    }
 }

@@ -19,15 +19,20 @@ public class ToWayLinkListTest {
             System.out.println(s);
         }
         // 测试获取
-        System.out.println("index为1的元素:" + toWayLinkList.get(1));
+//        System.out.println("index为1的元素:" + toWayLinkList.get(1));
         // 测试删除
-        System.out.println("删除的元素:" + toWayLinkList.remove(0));
+//        System.out.println("删除的元素:" + toWayLinkList.remove(0));
         // Iterator遍历
+//        for (String s : toWayLinkList) {
+//            System.out.println(s);
+//        }
+        // 测试清空
+//        toWayLinkList.clear();
+//        System.out.println("清空后元素数量:" + toWayLinkList.length());
+
+        toWayLinkList.reverse();
         for (String s : toWayLinkList) {
             System.out.println(s);
         }
-        // 测试清空
-        toWayLinkList.clear();
-        System.out.println("清空后元素数量:" + toWayLinkList.length());
     }
 }
