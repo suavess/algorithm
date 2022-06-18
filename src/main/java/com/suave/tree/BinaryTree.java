@@ -29,23 +29,12 @@ public class BinaryTree<Key extends Comparable<Key>, Value> {
      * 插入节点
      */
     public void put(Key key, Value value) {
-        put(root, key, value);
-    }
-
-    /**
-     * 向指定的树下添加节点
-     *
-     * @param x     指定的树节点
-     * @param key   插入的节点的键
-     * @param value 插入节点的值
-     */
-    public void put(TreeNode<Key, Value> x, Key key, Value value) {
-        if (x == null) {
+        if (root == null) {
             n++;
             root = new TreeNode<>(key, value, null, null);
             return;
         }
-        TreeNode<Key, Value> node = x;
+        TreeNode<Key, Value> node = root;
         while (true) {
             // 当前节点
             if (node.key.compareTo(key) > 0) {
