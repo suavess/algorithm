@@ -1,5 +1,8 @@
 package com.suave.tree;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 递归实现的二叉树
  *
@@ -151,5 +154,24 @@ public class RecursionBinaryTree<Key extends Comparable<Key>, Value> {
             return node;
         }
         return max(node.right);
+    }
+
+    public List<Key> preErgodic() {
+        List<Key> result = new ArrayList<>();
+        preErgodic(root, result);
+        return result;
+    }
+
+    private void preErgodic(TreeNode<Key, Value> node, List<Key> list) {
+        if (node == null) {
+            return;
+        }
+        list.add(node.key);
+        if (node.left != null){
+            preErgodic(node.left, list);
+        }
+        if (node.right != null){
+            preErgodic(node.right, list);
+        }
     }
 }

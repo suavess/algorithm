@@ -1,5 +1,9 @@
 package com.suave.tree;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
+
 /**
  * 循环查找实现的二叉树
  *
@@ -159,5 +163,33 @@ public class BinaryTree<Key extends Comparable<Key>, Value> {
             node = node.right;
         }
         return node.value;
+    }
+
+    /**
+     * 前序遍历
+     *
+     * @return -
+     */
+    public List<Key> preErgodic() {
+        TreeNode<Key, Value> node = root;
+        List<Key> result = new ArrayList<>();
+        // 构建一个栈
+        Stack<TreeNode<Key, Value>> stack = new Stack<>();
+        while (node != null || !stack.isEmpty()) {
+            if (node == null) {
+                node = stack.pop().right;
+                continue;
+            }
+            stack.add(node);
+            result.add(node.key);
+            if (node.left != null) {
+                // 左边不为空,向左遍历
+                node = node.left;
+            } else {
+                // 左边为空,弹出栈顶元素,向右遍历
+                node = stack.pop().right;
+            }
+        }
+        return result;
     }
 }
