@@ -38,7 +38,7 @@ public class RecursionBinaryTree<Key extends Comparable<Key>, Value> {
     /**
      * 添加节点
      *
-     * @param node     指定的树节点
+     * @param node  指定的树节点
      * @param key   插入的节点的键
      * @param value 插入节点的值
      * @return 返回树的根节点
@@ -167,11 +167,30 @@ public class RecursionBinaryTree<Key extends Comparable<Key>, Value> {
             return;
         }
         list.add(node.key);
-        if (node.left != null){
+        if (node.left != null) {
             preErgodic(node.left, list);
         }
-        if (node.right != null){
+        if (node.right != null) {
             preErgodic(node.right, list);
+        }
+    }
+
+    public List<Key> midErgodic() {
+        List<Key> result = new ArrayList<>();
+        midErgodic(root, result);
+        return result;
+    }
+
+    private void midErgodic(TreeNode<Key, Value> node, List<Key> result) {
+        if (node == null) {
+            return;
+        }
+        if (node.left != null) {
+            midErgodic(node.left, result);
+        }
+        result.add(node.key);
+        if (node.right != null) {
+            midErgodic(node.right, result);
         }
     }
 }

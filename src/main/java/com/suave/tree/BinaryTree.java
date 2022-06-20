@@ -192,4 +192,26 @@ public class BinaryTree<Key extends Comparable<Key>, Value> {
         }
         return result;
     }
+
+    /**
+     * 中序遍历
+     *
+     * @return -
+     */
+    public List<Key> midErgodic() {
+        TreeNode<Key, Value> node = root;
+        List<Key> result = new ArrayList<>();
+        // 构建一个栈
+        Stack<TreeNode<Key, Value>> stack = new Stack<>();
+        while (node != null || !stack.isEmpty()) {
+            while (node != null) {
+                stack.add(node);
+                node = node.left;
+            }
+            node = stack.pop();
+            result.add(node.key);
+            node = node.right;
+        }
+        return result;
+    }
 }

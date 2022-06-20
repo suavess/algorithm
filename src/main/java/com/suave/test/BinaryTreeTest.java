@@ -22,6 +22,9 @@ public class BinaryTreeTest {
 //        System.out.println(binaryTree.size());
 //        System.out.println(binaryTree.min());
 //        System.out.println(binaryTree.max());
+        // 前序遍历 3 1 8 5 10
         System.out.println(binaryTree.preErgodic());
+        // 中序遍历 1 3 5 8 10
+        System.out.println(binaryTree.midErgodic());
     }
 }
