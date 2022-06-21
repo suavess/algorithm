@@ -193,4 +193,23 @@ public class RecursionBinaryTree<Key extends Comparable<Key>, Value> {
             midErgodic(node.right, result);
         }
     }
+
+    public List<Key> afterErgodic() {
+        List<Key> result = new ArrayList<>();
+        afterErgodic(root, result);
+        return result;
+    }
+
+    private void afterErgodic(TreeNode<Key, Value> node, List<Key> result) {
+        if (node == null) {
+            return;
+        }
+        if (node.left != null) {
+            afterErgodic(node.left, result);
+        }
+        if (node.right != null) {
+            afterErgodic(node.right, result);
+        }
+        result.add(node.key);
+    }
 }

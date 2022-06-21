@@ -214,4 +214,42 @@ public class BinaryTree<Key extends Comparable<Key>, Value> {
         }
         return result;
     }
+
+    /**
+     * 后序遍历
+     *
+     * @return -
+     */
+    public List<Key> afterErgodic() {
+        TreeNode<Key, Value> node = root;
+        // 记录上次访问过的节点
+        TreeNode<Key, Value> lastVisitNode = root;
+        List<Key> result = new ArrayList<>();
+        // 构建一个栈
+        Stack<TreeNode<Key, Value>> stack = new Stack<>();
+        while (node != null) {
+            stack.push(node);
+            node = node.left;
+        }
+        while (!stack.empty()) {
+            node = stack.peek();
+            // 根节点被访问的前提是无右子树或右子树已被访问过
+            if (node.right != null && node.right != lastVisitNode) {
+                // 进入右子树
+                node = node.right;
+                while (node != null) {
+                    // 再走到右子树的最左边
+                    stack.push(node);
+                    node = node.left;
+                }
+            } else {
+                //访问
+                stack.pop();
+                result.add(node.key);
+                //修改最近被访问的节点
+                lastVisitNode = node;
+            }
+        }
+        return result;
+    }
 }

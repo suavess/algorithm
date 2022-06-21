@@ -25,5 +25,7 @@ public class RecursionBinaryTreeTest {
         System.out.println(binaryTree.preErgodic());
         // 中序遍历 1 3 5 8 10
         System.out.println(binaryTree.midErgodic());
+        // 后序遍历 1 5 10 8 3
+        System.out.println(binaryTree.afterErgodic());
     }
 }
