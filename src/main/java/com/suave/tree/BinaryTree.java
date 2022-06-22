@@ -276,4 +276,24 @@ public class BinaryTree<Key extends Comparable<Key>, Value> {
         }
         return result;
     }
+
+    public int maxDepth() {
+        List<TreeNode<Key, Value>> list = new ArrayList<>();
+        int result = 0;
+        list.add(root);
+        while (!list.isEmpty()) {
+            List<TreeNode<Key, Value>> tmp = new ArrayList<>(list);
+            list.clear();
+            for (TreeNode<Key, Value> keyValueTreeNode : tmp) {
+                if (keyValueTreeNode.left != null) {
+                    list.add(keyValueTreeNode.left);
+                }
+                if (keyValueTreeNode.right != null) {
+                    list.add(keyValueTreeNode.right);
+                }
+            }
+            result++;
+        }
+        return result;
+    }
 }

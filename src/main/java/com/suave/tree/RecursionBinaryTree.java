@@ -1,5 +1,7 @@
 package com.suave.tree;
 
+import org.w3c.dom.Node;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -240,5 +242,24 @@ public class RecursionBinaryTree<Key extends Comparable<Key>, Value> {
         if (node.right != null) {
             layerErgodic(node.right,level + 1, list);
         }
+    }
+
+    public int maxDepth(){
+        return maxDepth(root);
+    }
+
+    private int maxDepth(TreeNode<Key, Value> node){
+        if (node == null) {
+            return 0;
+        }
+        int maxLeft = 0;
+        int maxRight = 0;
+        if (node.left != null){
+            maxLeft = maxDepth(node.left);
+        }
+        if (node.right != null){
+            maxRight = maxDepth(node.right);
+        }
+        return Math.max(maxLeft, maxRight) + 1;
     }
 }
