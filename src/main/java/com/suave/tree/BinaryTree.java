@@ -252,4 +252,28 @@ public class BinaryTree<Key extends Comparable<Key>, Value> {
         }
         return result;
     }
+
+    /**
+     * @return -
+     */
+    public List<Key> layerErgodic() {
+        List<Key> result = new ArrayList<>();
+        List<TreeNode<Key, Value>> list = new ArrayList<>();
+        TreeNode<Key, Value> node = root;
+        list.add(node);
+        while (!list.isEmpty()) {
+            List<TreeNode<Key, Value>> tmpList = new ArrayList<>(list);
+            list.clear();
+            for (TreeNode<Key, Value> keyValueTreeNode : tmpList) {
+                result.add(keyValueTreeNode.key);
+                if (keyValueTreeNode.left != null) {
+                    list.add(keyValueTreeNode.left);
+                }
+                if (keyValueTreeNode.right != null) {
+                    list.add(keyValueTreeNode.right);
+                }
+            }
+        }
+        return result;
+    }
 }

@@ -212,4 +212,33 @@ public class RecursionBinaryTree<Key extends Comparable<Key>, Value> {
         }
         result.add(node.key);
     }
+
+    public List<Key> layerErgodic() {
+        List<List<Key>> list = new ArrayList<>();
+        List<Key> result = new ArrayList<>();
+        layerErgodic(root, 0, list);
+        for (List<Key> keys : list) {
+            result.addAll(keys);
+        }
+        return result;
+    }
+
+    private void layerErgodic(TreeNode<Key, Value> node, int level, List<List<Key>> list) {
+        if (node == null) {
+            return;
+        }
+        if (list.size() < level + 1) {
+            List<Key> tmp = new ArrayList<>();
+            tmp.add(node.key);
+            list.add(tmp);
+        } else {
+            list.get(level).add(node.key);
+        }
+        if (node.left != null) {
+            layerErgodic(node.left, level + 1, list);
+        }
+        if (node.right != null) {
+            layerErgodic(node.right,level + 1, list);
+        }
+    }
 }
